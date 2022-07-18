@@ -18,8 +18,8 @@ ext {
                    arouterapi     : '1.5.0',
                    aroutercompiler: '1.2.2',
                    magicindicator : '1.5.0',
-                   glide          : '4.9.0',
-                   glidecompiler  : '4.9.0',
+                   glide          : '4.13.2',
+                   glidecompiler  : '4.13.2',
                    okhttp         : '3.14.9',
                    gson           : '2.8.0',
     ]

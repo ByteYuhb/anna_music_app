@@ -1,3 +1,5 @@
+include ':lib_keepAlive'
+include ':lib_image_loader'
 include ':lib_audio'
 include ':anna_music'
 rootProject.name = "anna_music_app"
