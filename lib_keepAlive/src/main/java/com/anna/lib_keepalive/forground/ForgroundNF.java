@@ -28,13 +28,14 @@ public class ForgroundNF {
 
     /**
      * 初始化NotificationCompat.Builder
+      这个提示最好友好点，不然系统会提示一个后台运行的通知，很容易引导用户去关闭
      */
     private void initCompatBuilder() {
         mNotificationCompatBuilder = new NotificationCompat.Builder(service,CHANNEL_ID);
         //标题
-        mNotificationCompatBuilder.setContentTitle("test keep alive");
+        mNotificationCompatBuilder.setContentTitle("欢迎使用云音乐");
         //通知内容
-        mNotificationCompatBuilder.setContentText("test alive");
+        mNotificationCompatBuilder.setContentText("现在开启我们的美好音乐时光吧");
         mNotificationCompatBuilder.setSmallIcon(R.mipmap.ic_launcher_round);
     }
 
@@ -57,11 +58,10 @@ public class ForgroundNF {
     }
 
     public void stopForegroundNotification(){
-        notificationManager.cancelAll();
-        service.stopForeground(true);
+        if(notificationManager != null)
+            notificationManager.cancelAll();
+        if(service !=null)
+            service.stopForeground(true);
     }
-
-
-
 
 }

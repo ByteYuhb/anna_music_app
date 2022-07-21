@@ -37,6 +37,8 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
+import static com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions.withCrossFade;
+
 public class CustomImageLoader {
     private CustomImageLoader(){
 
@@ -77,8 +79,10 @@ public class CustomImageLoader {
         Glide.with(view.getContext())
                 .asBitmap()
                 .load(url)
-                .listener(listener)
                 .apply(initCommonOptions())
+                .transition(withCrossFade())
+                .fitCenter()
+                .listener(listener)
                 .into(initCustomViewTarget(view));
     }
     /**创建一个设置View背景的接口,不带回调
@@ -116,6 +120,7 @@ public class CustomImageLoader {
         Glide.with(imageView)
                 .asBitmap()
                 .load(url)
+                .placeholder(R.mipmap.b4y)
                 .into(new BitmapImageViewTarget(imageView){
                     @Override
                     protected void setResource(Bitmap resource) {
@@ -139,15 +144,13 @@ public class CustomImageLoader {
     }
 
     private BaseRequestOptions initCommonOptions(){
-        return  new RequestOptions()
-                .centerCrop()
-                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-                .downsample(DownsampleStrategy.AT_LEAST)
+        RequestOptions options = new RequestOptions();
+        options.placeholder(R.mipmap.b4y)
                 .error(R.mipmap.b4y)
-                .placeholder(R.mipmap.b4y)
+                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                 .skipMemoryCache(false)
-                .transform(new Rotate(90))
                 .priority(Priority.NORMAL);
+        return options;
     }
 
     /**初始化一个CustomViewTarget
@@ -159,12 +162,12 @@ public class CustomImageLoader {
         return new CustomViewTarget<T, Bitmap>(vg) {
             @Override
             protected void onResourceCleared(@Nullable Drawable placeholder) {
-                view.setBackground(placeholder);
+//                view.setBackground(placeholder);
             }
 
             @Override
             public void onLoadFailed(@Nullable Drawable errorDrawable) {
-                view.setBackground(errorDrawable);
+//                view.setBackground(errorDrawable);
             }
             @Override
             public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {

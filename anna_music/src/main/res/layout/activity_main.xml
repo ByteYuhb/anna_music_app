@@ -12,31 +12,37 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         tools:ignore="MissingConstraints"
-        android:text="id_btn1"/>
+        android:text="bind"/>
     <Button
         android:id="@+id/id_btn2"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         tools:ignore="MissingConstraints"
-        android:text="id_btn2"/>
+        android:text="setQueue"/>
     <Button
         android:id="@+id/id_btn3"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         tools:ignore="MissingConstraints"
-        android:text="id_btn3"/>
+        android:text="addAudio"/>
     <Button
         android:id="@+id/id_btn4"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         tools:ignore="MissingConstraints"
-        android:text="id_btn4"/>
+        android:text="play"/>
     <Button
         android:id="@+id/id_btn5"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         tools:ignore="MissingConstraints"
-        android:text="id_btn5"/>
+        android:text="next"/>
+    <Button
+        android:id="@+id/id_btn6"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        tools:ignore="MissingConstraints"
+        android:text="pre"/>
     <ImageView
         android:id="@+id/id_iv_1"
         android:layout_width="wrap_content"

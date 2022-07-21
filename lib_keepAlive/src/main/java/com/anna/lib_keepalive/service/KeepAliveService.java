@@ -1,5 +1,6 @@
 package com.anna.lib_keepalive.service;
 
+import android.app.Service;
 import android.app.job.JobInfo;
 import android.app.job.JobParameters;
 import android.app.job.JobScheduler;
@@ -9,9 +10,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Handler;
+import android.os.IBinder;
 import android.os.Message;
 import android.util.Log;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.anna.lib_keepalive.forground.ForgroundNF;
@@ -20,6 +23,10 @@ import com.anna.lib_keepalive.utils.Utils;
 
 /**
  * 创建一个JobService用于提高应用优先级
+ * 这种前台保活方式，目前一定需要一个明确的通知显示，
+ * 这个提示最好友好点，不然系统会提示一个后台运行的通知，很容易引导用户去关闭。
+ * 如果是音乐类型的，可以直接使用音乐的服务MusicPlayerService挂接通知即可做的一定程度的保活
+ *
  */
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class KeepAliveService extends JobService {
@@ -40,6 +47,7 @@ public class KeepAliveService extends JobService {
         NONE,
         BATTERYOPTIMIZATION,
         RESTARTACTION,
+        JOB_SERVICE,
         ALL
     }
 
@@ -63,7 +71,7 @@ public class KeepAliveService extends JobService {
 
     /**外部只需要调用这句话就可以启动一个保活状态
      * @param context 启动服务的上下文
-     * @param strategy 启动保活服务的策略
+     * @param _strategy 启动保活服务的策略
      *
      *                 AliveStrategy.BATTERYOPTIMIZATION：启动电量优化保活
      *
@@ -73,8 +81,9 @@ public class KeepAliveService extends JobService {
      *
      *                 AliveStrategy.NONE：不启动上面两个任何一个
      *
+     *                  AliveStrategy.JOB_SERVICE：只使用JobService进行保活
+     *
      */
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public static void start(Context context,AliveStrategy _strategy){
         strategy = _strategy;
         Intent intent = new Intent(context,KeepAliveService.class);
@@ -105,14 +114,15 @@ public class KeepAliveService extends JobService {
         JobInfo job = initJob();
         mJobScheduler.cancel(JOB_ID);
         mJobScheduler.schedule(job);
-        startNotificationForGround();
+        if(strategy != AliveStrategy.NONE && strategy != AliveStrategy.JOB_SERVICE)
+            startNotificationForGround();
         return super.onStartCommand(intent,flags,startId);
     }
 
     /**获取启动策略
      */
     private void initStrategy() {
-        if(strategy == AliveStrategy.NONE){
+        if(strategy == AliveStrategy.NONE || strategy == AliveStrategy.JOB_SERVICE){
             return;
         }
         if(strategy == AliveStrategy.BATTERYOPTIMIZATION){
@@ -160,7 +170,10 @@ public class KeepAliveService extends JobService {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mForgroundNF.stopForegroundNotification();
+        if(mForgroundNF!=null)
+            mForgroundNF.stopForegroundNotification();
     }
+
+
 
 }

@@ -39,3 +39,4 @@ public class CancelNotifyervice extends Service {
         _mForgroundNF.stopForegroundNotification();
     }
 }
+

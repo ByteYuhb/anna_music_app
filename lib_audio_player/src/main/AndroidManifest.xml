@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.anna.lib_audio_player">
+
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <application
+        android:allowBackup="true"
+        >
+
+        <service
+            android:name=".api.MusicPlayerService"
+            >
+            <intent-filter>
+                <action android:name="com.anna.media.audio.action"/>
+            </intent-filter>
+        </service>
+        <activity android:name=".media.activity.MusicPlayerActivity"/>
+
+    </application>
+
+</manifest>
