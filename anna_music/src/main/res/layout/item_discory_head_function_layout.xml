@@ -1,0 +1,82 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:orientation="vertical">
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingRight="15dp"
+    android:paddingStart="15dp"
+    android:paddingTop="10dp">
+
+    <com.anna.lib_common_ui.VerticalItemView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      app:icon="@mipmap/shortcut_fm"
+      app:iconHeight="50dp"
+      app:iconWidth="50dp"
+      app:infoText="每日推荐"
+      app:infoTextColor="@color/color_333333"
+      app:infoTextMarginTop="5dp"
+      app:infoTextSize="11sp" />
+
+    <com.anna.lib_common_ui.VerticalItemView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      app:icon="@mipmap/shortcut_identify"
+      app:iconHeight="50dp"
+      app:iconWidth="50dp"
+      app:infoText="歌单"
+      app:infoTextColor="@color/color_333333"
+      app:infoTextMarginTop="5dp"
+      app:infoTextSize="11sp" />
+
+    <com.anna.lib_common_ui.VerticalItemView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      app:icon="@mipmap/shortcut_fm"
+      app:iconHeight="50dp"
+      app:iconWidth="50dp"
+      app:infoText="排行榜"
+      app:infoTextColor="@color/color_333333"
+      app:infoTextMarginTop="5dp"
+      app:infoTextSize="11sp" />
+
+    <com.anna.lib_common_ui.VerticalItemView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      app:icon="@mipmap/shortcut_local_music"
+      app:iconHeight="50dp"
+      app:iconWidth="50dp"
+      app:infoText="电台"
+      app:infoTextColor="@color/color_333333"
+      app:infoTextMarginTop="5dp"
+      app:infoTextSize="11sp" />
+
+    <com.anna.lib_common_ui.VerticalItemView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      app:icon="@mipmap/shortcut_search"
+      app:iconHeight="50dp"
+      app:iconWidth="50dp"
+      app:infoText="直播"
+      app:infoTextColor="@color/color_333333"
+      app:infoTextMarginTop="5dp"
+      app:infoTextSize="11sp" />
+  </LinearLayout>
+
+  <View
+    android:layout_width="match_parent"
+    android:layout_height="0.5dp"
+    android:layout_marginBottom="20dp"
+    android:layout_marginTop="20dp"
+    android:background="#dddddd" />
+</LinearLayout>

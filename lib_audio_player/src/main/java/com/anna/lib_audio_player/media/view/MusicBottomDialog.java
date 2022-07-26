@@ -2,8 +2,14 @@ package com.anna.lib_audio_player.media.view;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -42,9 +48,17 @@ public class MusicBottomDialog extends BottomSheetDialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_bottom_sheet);
+
         EventBus.getDefault().register(this);
         initAction();
         initView();
+        DisplayMetrics dm = new DisplayMetrics();
+        WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+        wm.getDefaultDisplay().getMetrics(dm);
+        Log.d("tag111:","width:"+dm.widthPixels);
+        RelativeLayout relativeLayout = findViewById(R.id.title_layout);
+        ViewGroup.LayoutParams params = relativeLayout.getLayoutParams();
+        Log.d("tag1:","width:"+params.width);
     }
 
     //当前歌曲列表
@@ -72,6 +86,14 @@ public class MusicBottomDialog extends BottomSheetDialog {
      * 根据initAction中获取的数据进行填充数据
      */
     private void initView() {
+                /**
+         * 充满宽度，也要以在style中定义
+         */
+        DisplayMetrics dm =  getContext().getResources().getDisplayMetrics();
+        Window dialogWindow = getWindow();
+        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+        lp.width = dm.widthPixels; //设置宽度
+        dialogWindow.setAttributes(lp);
         mode_image_view = findViewById(R.id.mode_image_view);
         mode_text_view = findViewById(R.id.mode_text_view);
         tip_view = findViewById(R.id.tip_view);
@@ -84,6 +106,8 @@ public class MusicBottomDialog extends BottomSheetDialog {
         setFavoriteView();
         //3.显示对应的歌曲列表
         showMusicList();
+
+
     }
 
 
