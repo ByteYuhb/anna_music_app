@@ -1,9 +1,9 @@
+include ':lib_update'
 include ':lib_common_ui'
 include ':lib_video'
 include ':lib_audio_player'
 include ':lib_keepAlive'
 include ':lib_image_loader'
-include ':lib_audio'
 include ':anna_music'
 include ':lib_network'
 rootProject.name = "anna_music_app"

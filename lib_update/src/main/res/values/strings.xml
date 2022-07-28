@@ -1,0 +1,16 @@
+<resources>
+  <string name="app_name">lib_update</string>
+  <!--update模块-->
+  <string name="update_title">快下载更新体验一下吧</string>
+  <string name="update_new_version">您有新版本</string>
+  <string name="update_install">安装</string>
+  <string name="cancel">取消</string>
+  <string name="update_download_failed">下载失败</string>
+  <string name="update_download_failed_msg">下载失败，请检查网络连接或 SD卡存储空间</string>
+  <string name="update_download_start">开始下载</string>
+  <string name="update_download_processing">正在下载</string>
+  <string name="update_download_finish">下载完成</string>
+  <string name="update_download_tip">提示</string>
+  <string name="no_new_version_title">已是最新版</string>
+  <string name="no_new_version_msg">您当前已经是最新版本，无需更新。</string>
+</resources>

@@ -3,6 +3,7 @@ package com.anna.music.app;
 import android.app.Application;
 
 import com.anna.lib_audio_player.api.AudioHelper;
+import com.anna.lib_update.app.UpdateHelper;
 import com.anna.lib_video.app.VideoHelper;
 
 public class AnnaMusicApplication extends Application {
@@ -15,6 +16,7 @@ public class AnnaMusicApplication extends Application {
         VideoHelper.init(this);
         //音频SDK初始化
         AudioHelper.init(this);
-
+        //初始化应用更新组件
+        UpdateHelper.init(this);
     }
 }

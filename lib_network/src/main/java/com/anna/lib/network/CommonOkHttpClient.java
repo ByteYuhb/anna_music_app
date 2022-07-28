@@ -3,6 +3,8 @@ package com.anna.lib.network;
 import com.anna.lib.network.cookie.SimpleCookieJar;
 import com.anna.lib.network.https.HttpsUtils;
 import com.anna.lib.network.listener.DisposeDataHandle;
+import com.anna.lib.network.request.CommonRequest;
+import com.anna.lib.network.request.RequestParams;
 import com.anna.lib.network.response.CommonFileCallBack;
 import com.anna.lib.network.response.CommonJsonCallback;
 
@@ -56,6 +58,14 @@ public class CommonOkHttpClient {
         return mOkHttpClient;
     }
 
+    /**
+     * 通过构造好的Request,Callback去发送请求
+     */
+    public static void get(String url, RequestParams params, DisposeDataHandle handle) {
+        Call call = mOkHttpClient.newCall(CommonRequest.createGetRequest(url,params));
+        call.enqueue(new CommonJsonCallback(handle));
+        return ;
+    }
     /**
      * 通过构造好的Request,Callback去发送请求
      */

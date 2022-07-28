@@ -10,6 +10,7 @@ import android.os.Message;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.anna.lib_audio_player.utils.NotificationSetUtil;
 import com.anna.lib_common_ui.base.BaseActivity;
 import com.anna.lib_common_ui.base.constant.Constant;
 import com.anna.lib_keepalive.service.KeepAliveService;
@@ -35,9 +36,16 @@ public class SplashActivity extends BaseActivity {
         }
         if(hasPermission(Constant.WRITE_READ_EXTERNAL_PERMISSION)){
             doSDCardPermission();
-        }else {
+        }
+        else {
             requestPermission(Constant.WRITE_READ_EXTERNAL_CODE,Constant.WRITE_READ_EXTERNAL_PERMISSION);
         }
+        NotificationSetUtil.OpenNotificationSetting(this, new NotificationSetUtil.OnNextListener() {
+            @Override
+            public void onNext() {
+
+            }
+        });
     }
 
     @Override

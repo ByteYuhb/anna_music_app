@@ -27,10 +27,12 @@ import com.anna.lib_common_ui.base.BaseActivity;
 import com.anna.lib_common_ui.base.constant.Constant;
 import com.anna.lib_common_ui.pager_indictor.ScaleTransitionPagerTitleView;
 import com.anna.lib_image_loader.glide.CustomImageLoader;
+import com.anna.lib_update.app.UpdateHelper;
 import com.anna.music.R;
 import com.anna.music.model.CHANNEL;
 import com.anna.music.model.login.LoginEvent;
 import com.anna.music.utils.UserManager;
+import com.anna.music.utils.Utils;
 import com.anna.music.view.home.adapter.HomePagerAdapter;
 import com.anna.music.view.login.LoginActivity;
 
@@ -264,15 +266,15 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
 
   //启动检查更新
   private void checkUpdate() {
-//    UpdateHelper.checkUpdate(this);
+    UpdateHelper.checkUpdate(this);
   }
 
   private void registerBroadcastReceiver() {
-//    if (mReceiver == null) {
-//      mReceiver = new UpdateReceiver();
-//      LocalBroadcastManager.getInstance(this)
-//          .registerReceiver(mReceiver, new IntentFilter(UpdateHelper.UPDATE_ACTION));
-//    }
+    if (mReceiver == null) {
+      mReceiver = new UpdateReceiver();
+      LocalBroadcastManager.getInstance(this)
+          .registerReceiver(mReceiver, new IntentFilter(UpdateHelper.UPDATE_ACTION));
+    }
   }
 
   private void unRegisterBroadcastReceiver() {
@@ -288,8 +290,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     @Override
     public void onReceive(Context context, Intent intent) {
       //启动安装页面
-//      context.startActivity(
-//          Utils.getInstallApkIntent(context, intent.getStringExtra(UpdateHelper.UPDATE_FILE_KEY)));
+      context.startActivity(
+          Utils.getInstallApkIntent(context, intent.getStringExtra(UpdateHelper.UPDATE_FILE_KEY)));
     }
   }
 

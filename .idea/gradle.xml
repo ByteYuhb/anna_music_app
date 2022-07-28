@@ -13,12 +13,12 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/anna_music" />
-            <option value="$PROJECT_DIR$/lib_audio" />
             <option value="$PROJECT_DIR$/lib_audio_player" />
             <option value="$PROJECT_DIR$/lib_common_ui" />
             <option value="$PROJECT_DIR$/lib_image_loader" />
             <option value="$PROJECT_DIR$/lib_keepAlive" />
             <option value="$PROJECT_DIR$/lib_network" />
+            <option value="$PROJECT_DIR$/lib_update" />
             <option value="$PROJECT_DIR$/lib_video" />
           </set>
         </option>

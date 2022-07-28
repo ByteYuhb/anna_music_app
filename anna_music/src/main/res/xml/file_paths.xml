@@ -2,5 +2,5 @@
 <paths xmlns:android="http://schemas.android.com/apk/res/android">
     <external-path
         name="external_storage_download"
-        path="anna" />
+        path="imooc/down" />
 </paths>
