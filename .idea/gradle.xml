@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="testRunner" value="PLATFORM" />
+        <option name="disableWrapperSourceDistributionNotification" value="true" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="1.8 (2)" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/anna_music" />
+            <option value="$PROJECT_DIR$/lib_audio_player" />
+            <option value="$PROJECT_DIR$/lib_common_ui" />
+            <option value="$PROJECT_DIR$/lib_image_loader" />
+            <option value="$PROJECT_DIR$/lib_keepAlive" />
+            <option value="$PROJECT_DIR$/lib_network" />
+            <option value="$PROJECT_DIR$/lib_update" />
+            <option value="$PROJECT_DIR$/lib_video" />
+            <option value="$PROJECT_DIR$/lib_webview" />
+            <option value="$PROJECT_DIR$/plugintest" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+        <option name="useQualifiedModuleNames" value="true" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

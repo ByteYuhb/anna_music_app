@@ -1,0 +1,34 @@
+plugins {
+    id 'groovy' // Groovy Language
+//    id 'org.jetbrains.kotlin.jvm' // Kotlin
+    id 'java-gradle-plugin' // Java Gradle Plugin
+
+}
+sourceSets {
+    main {
+        groovy {
+            srcDir 'src/main/groovy'
+        }
+
+        java {
+            srcDir 'src/main/java'
+        }
+
+        resources {
+            srcDir 'src/main/resources'
+        }
+    }
+}
+gradlePlugin {
+    plugins {
+        modularPlugin {
+            // Plugin id.
+            id = 'com.yuhb.plugin'
+            // Plugin implementation.
+            implementationClass = 'com.yuhb.plugin.HelloPlugin'
+        }
+    }
+}
+
+
+

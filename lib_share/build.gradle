@@ -1,0 +1,87 @@
+plugins {
+    id 'com.android.library'
+}
+if(getProperty('shouldHasMobSDK')=='true'){
+    apply plugin: 'com.mob.sdk'
+}
+
+
+if(getProperty('shouldHasMobSDK')=='true'){
+    MobSDK {
+        appKey "3667da840dfa9"
+        appSecret "2bbd0542bc342d4779f848c044680de1"
+        ShareSDK {
+            devInfo {
+                Wechat {
+                    appId "wx4868b35061f87885"
+                    appSecret "64020361b8ec4c99936c0e3999a9f249"
+                    userName "gh_afb25ac019c9"
+                    path "pages/index/index.html?id=1"
+                    withShareTicket true
+                    miniprogramType 2
+                }
+                WechatMoments {
+                    appId "wx4868b35061f87885"
+                    appSecret "64020361b8ec4c99936c0e3999a9f249"
+                }
+                QQ {
+                    id 7
+                    sortId 7
+                    appId "1112152781"
+                    appKey "Evp7lb68Y83WwRpI"
+                    shareByAppClient true
+                    bypassApproval true
+                    enable true
+                }
+                QZone {
+                    appId "1112152781"
+                    appKey "Evp7lb68Y83WwRpI"
+                }
+                //.......
+            }
+        }
+    }
+}
+
+
+android {
+    compileSdkVersion 31
+    buildToolsVersion "33.0.0"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation fileTree(dir:'libs',include:['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'com.google.android.material:material:1.4.0'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
