@@ -34,6 +34,7 @@ import com.anna.lib_audio_player.media.model.AudioBean;
 import com.anna.lib_audio_player.media.utils.Utils;
 import com.anna.lib_audio_player.media.view.MusicBottomDialog;
 import com.anna.lib_image_loader.glide.CustomImageLoader;
+//import com.anna.lib_share.ShareDialog;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -105,7 +106,7 @@ public class MusicPlayerActivity extends FragmentActivity {
         findViewById(R.id.share_view).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                shareMusic(mAudioBean.mUrl, mAudioBean.name);
+                shareMusic(mAudioBean.mUrl, mAudioBean.name);
             }
         });
         findViewById(R.id.show_list_view).setOnClickListener(new View.OnClickListener() {
@@ -286,5 +287,19 @@ public class MusicPlayerActivity extends FragmentActivity {
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+    }
+
+    /**
+     * 分享慕课网给好友
+     */
+    private void shareMusic(String url, String name) {
+//        ShareDialog dialog = new ShareDialog(this, false);
+//        dialog.setShareType(5);
+//        dialog.setShareTitle(name);
+//        dialog.setShareTitleUrl(url);
+//        dialog.setShareText("慕课网");
+//        dialog.setShareSite("imooc");
+//        dialog.setShareSiteUrl("http://www.imooc.com");
+//        dialog.show();
     }
 }

@@ -2,6 +2,7 @@ package com.anna.music.app;
 
 import android.app.Application;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.anna.lib_audio_player.api.AudioHelper;
 import com.anna.lib_update.app.UpdateHelper;
 import com.anna.lib_video.app.VideoHelper;
@@ -18,5 +19,7 @@ public class AnnaMusicApplication extends Application {
         AudioHelper.init(this);
         //初始化应用更新组件
         UpdateHelper.init(this);
+        //ARouter初始化
+        ARouter.init(this);
     }
 }

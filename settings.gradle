@@ -1,3 +1,9 @@
+include ':plugintest'
+include ':lib_webview'
+if(getProperty('shouldHasMobSDK')=='true'){
+    include ':lib_share'
+}
+
 include ':lib_update'
 include ':lib_common_ui'
 include ':lib_video'

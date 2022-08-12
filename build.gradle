@@ -2,8 +2,9 @@
 apply from: file('anna.gradle')
 buildscript {
     repositories {
-        google()
-        jcenter()
+        maven {url "https://maven.aliyun.com/repository/google/"}
+        maven {url "https://maven.aliyun.com/repository/public/"}
+        maven {url 'https://maven.aliyun.com/repository/gradle-plugin/'}
         mavenCentral()
         maven {
             url = 'http://localhost:8081/repository/anna_release/'
@@ -12,20 +13,37 @@ buildscript {
                 password = 'admin123456'
             }
         }
+        if(getProperty('shouldHasMobSDK')){
+            maven {url "https://mvn.mob.com/android"}
+        }
+
+
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.1.1"
         //greendao插件依赖
         classpath 'org.greenrobot:greendao-gradle-plugin:3.3.0'
+
+        classpath "com.alibaba:arouter-register:1.0.2"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+        // 2.注册MobSDK
+        if(getProperty('shouldHasMobSDK')=='true'){
+            classpath "com.mob.sdk:MobSDK:2018.0319.1724"
+        }
+        classpath "com.github.dcendents:android-maven-gradle-plugin:1.5"
+
     }
 }
 
 allprojects {
     repositories {
-        google()
-        jcenter()
+//        google()
+//        jcenter()
+        mavenCentral()
+        maven {url "https://maven.aliyun.com/repository/google/"}
+        maven {url "https://maven.aliyun.com/repository/public/"}
+        maven {url 'https://maven.aliyun.com/repository/gradle-plugin/'}
         maven { url "https://jitpack.io" }
         maven {
             url = 'http://localhost:8081/repository/anna_release/'

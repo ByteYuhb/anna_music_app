@@ -21,6 +21,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.viewpager.widget.ViewPager;
 
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.anna.lib_audio_player.api.AudioHelper;
 import com.anna.lib_audio_player.media.model.AudioBean;
 import com.anna.lib_common_ui.base.BaseActivity;
@@ -258,10 +259,10 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
   }
 
   private void gotoWebView(String url) {
-//    ARouter.getInstance()
-//        .build(Constant.Router.ROUTER_WEB_ACTIVIYT)
-//        .withString("url", url)
-//        .navigation();
+    ARouter.getInstance()
+        .build(Constant.Router.ROUTER_WEB_ACTIVIYT)
+        .withString("url", url)
+        .navigation();
   }
 
   //启动检查更新
