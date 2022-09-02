@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
 }
+apply plugin: 'com.alibaba.arouter'
 
 android {
     compileSdkVersion 31
@@ -37,47 +38,55 @@ android {
 }
 
 dependencies {
-
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation rootProject.depsLibs.okhttp
-    //gson解析库
-    implementation rootProject.depsLibs.gson
-    //eventbus类库依赖
-    implementation rootProject.depsLibs.eventbus
-    //基础UI库
-    implementation project(':lib_common_ui')
-    //网络请求库
-    implementation project(':lib_network')
-    //图片加载
-    implementation project(path: ':lib_image_loader')
-    //应用保活
-    implementation project(path: ':lib_keepAlive')
-    //音乐播放
-    implementation project(path: ':lib_audio_player')
-    //视频播放
-    implementation project(path: ':lib_video')
-    implementation rootProject.depsLibs.magicindicator
-    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
-    implementation project(path: ':lib_update')
-//    implementation project(path: ':lib_share')
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-//    implementation 'com.anna.android:lib_audio:1.0.2'
-
-    implementation 'com.google.android.exoplayer:exoplayer:2.18.1'
-    implementation 'com.google.android.exoplayer:exoplayer-core:2.18.1'
-    implementation 'com.google.android.exoplayer:exoplayer-dash:2.18.1'
-    implementation 'com.google.android.exoplayer:exoplayer-ui:2.18.1'
 
     //arouter库
     implementation(rootProject.depsLibs.arouterapi) {
         exclude group: 'com.android.support'
     }
     annotationProcessor rootProject.depsLibs.aroutercompiler
+    //eventbus类库依赖
+    implementation rootProject.depsLibs.eventbus
+    //greenDao类库
+    implementation rootProject.depsLibs.greendao
+    //okhttp
+    implementation rootProject.depsLibs.okhttp
+    //gson解析库
+    implementation rootProject.depsLibs.gson
+
+    implementation rootProject.depsLibs.appcompact
+    implementation rootProject.depsLibs.recyclerview
+    //指示器
+    implementation rootProject.depsLibs.magicindicator
+    //glide
+    implementation rootProject.ext.depsLibs.glide
+    //rxjava
+    implementation rootProject.ext.depsLibs.rxjava
+    implementation rootProject.ext.depsLibs.rxandroid
+
+
+
+    implementation project(path: ':lib_video')
+    implementation project(path: ':lib_update')
+    implementation project(path: ':lib_common_ui')
+    implementation project(path: ':lib_image_loader')
+    implementation project(path: ':lib_keepAlive')
+    implementation project(path: ':lib_network')
+    implementation project(path: ':lib_update')
+    implementation project(path: ':lib_video')
+    implementation project(path: ':lib_webview')
+
+    implementation project(path: ':ft_base_service')
+    implementation project(path: ':ft_login')
+    implementation project(path: ':ft_home')
+    implementation project(path: ':ft_audio')
+    implementation project(path: ':ft_loading')
+
 
 
 

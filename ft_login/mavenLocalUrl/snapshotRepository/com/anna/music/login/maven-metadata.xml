@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.anna.music</groupId>
+  <artifactId>login</artifactId>
+  <versioning>
+    <versions>
+      <version>v1.0.0-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20220902134454</lastUpdated>
+  </versioning>
+</metadata>

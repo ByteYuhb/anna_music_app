@@ -1,0 +1,34 @@
+apply plugin: 'maven'
+
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            // 是否快照版本
+            def isSnapShot = Boolean.valueOf(MAVEN_IS_SNAPSHOT)
+            def versionName = MAVEN_VERSION
+            if (isSnapShot) {
+                versionName += "-SNAPSHOT"
+            }
+            // 组件信息
+            pom.groupId = MAVEN_GROUP_ID
+            pom.artifactId = MAVEN_ARTIFACTID
+            pom.version = versionName
+
+            // 快照仓库路径
+            snapshotRepository(url: uri(MAVEN_SNAPSHOT_URL)) {
+                authentication(userName: MAVEN_USERNAME, password: MAVEN_USERNAME)
+            }
+            // 发布仓库路径
+            repository(url: uri(MAVEN_RELEASE_URL)) {
+                authentication(userName: MAVEN_USERNAME, password: MAVEN_USERNAME)
+            }
+
+            println("###################################"
+                    + "\nuploadArchives = " + pom.groupId + ":" + pom.artifactId + ":" + pom.version + "." + pom.packaging
+                    + "\nrepository =" + (isSnapShot ? MAVEN_SNAPSHOT_URL : MAVEN_RELEASE_URL)
+                    + "\n###################################"
+            )
+        }
+    }
+}

@@ -1,0 +1,64 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    compileSdkVersion 33
+    buildToolsVersion "33.0.0"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+        android {
+            javaCompileOptions {
+                annotationProcessorOptions {
+                    arguments = [AROUTER_MODULE_NAME: project.getName(), AROUTER_GENERATE_DOC: "enable"]
+                }
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    compileOnly 'androidx.appcompat:appcompat:1.3.1'
+    compileOnly 'com.google.android.material:material:1.4.0'
+
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    compileOnly rootProject.depsLibs.okhttp
+    //arouter核心api
+    compileOnly(rootProject.depsLibs.arouterapi) {
+        exclude group: 'com.android.support'
+    }
+    //arouter注解处理器
+    annotationProcessor rootProject.depsLibs.aroutercompiler
+    //eventbus类库依赖
+    compileOnly rootProject.depsLibs.eventbus
+    //指示器
+    compileOnly rootProject.depsLibs.magicindicator
+
+    compileOnly project(path: ':ft_base_service')
+    compileOnly project(path: ':lib_video')
+    compileOnly project(path: ':lib_network')
+    compileOnly project(path: ':lib_common_ui')
+    compileOnly project(path: ':lib_image_loader')
+}

@@ -1,4 +1,8 @@
-include ':plugintest'
+include ':ft_loading'
+include ':ft_audio'
+include ':ft_home'
+include ':ft_base_service'
+include ':ft_login'
 include ':lib_webview'
 if(getProperty('shouldHasMobSDK')=='true'){
     include ':lib_share'
@@ -7,9 +11,12 @@ if(getProperty('shouldHasMobSDK')=='true'){
 include ':lib_update'
 include ':lib_common_ui'
 include ':lib_video'
-include ':lib_audio_player'
+//include ':lib_audio_player'
 include ':lib_keepAlive'
 include ':lib_image_loader'
 include ':anna_music'
 include ':lib_network'
+
+//include ':uploadversion'
 rootProject.name = "anna_music_app"
+

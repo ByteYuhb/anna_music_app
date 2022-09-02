@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.yuhb.demo</groupId>
+  <artifactId>maven</artifactId>
+  <versioning>
+    <versions>
+      <version>v1.0.0-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20220902031141</lastUpdated>
+  </versioning>
+</metadata>

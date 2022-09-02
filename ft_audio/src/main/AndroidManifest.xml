@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.anna.ft_audio">
+    <application>
+        <service
+            android:name=".api.MusicPlayerService"
+            >
+            <intent-filter>
+                <action android:name="com.anna.media.audio.action"/>
+            </intent-filter>
+        </service>
+        <activity android:name=".media.activity.MusicPlayerActivity"/>
+    </application>
+</manifest>

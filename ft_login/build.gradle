@@ -1,0 +1,98 @@
+if(isRunAlone.toBoolean()){
+    apply plugin:'com.android.application'
+}else{
+    apply plugin:'com.android.library'
+}
+apply from:file('../maven.gradle')
+android {
+    compileSdkVersion 33
+    buildToolsVersion "33.0.0"
+
+    defaultConfig {
+        if(isRunAlone.toBoolean()){
+            applicationId 'com.anna.ft_login'
+        }
+        minSdkVersion 16
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+        android {
+            javaCompileOptions {
+                annotationProcessorOptions {
+                    arguments = [AROUTER_MODULE_NAME: project.getName(), AROUTER_GENERATE_DOC: "enable"]
+                }
+            }
+        }
+    }
+    sourceSets {
+        main {
+            java {
+                srcDirs = ['src/main/java']
+            }
+
+            aidl {
+                srcDirs = ['src/main/aidl']
+            }
+            manifest {
+                if(isRunAlone.toBoolean()){
+                    srcFile 'src/main/manifest/AndroidManifest.xml'
+                }else {
+                    srcFile 'src/main/AndroidManifest.xml'
+                }
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+def dependList = [rootProject.depsLibs.okhttp,
+                  rootProject.depsLibs.gson,
+                  rootProject.depsLibs.appcompact,
+                  rootProject.depsLibs.design,
+                  rootProject.depsLibs.eventbus,
+                  rootProject.depsLibs.arouterapi,
+                  ':lib_network',':lib_common_ui',':ft_base_service']
+
+
+dependencies {
+    if(!isRunAlone.toBoolean()){
+        dependList.each { String depend ->
+            depend.startsWithAny(':lib',':ft')? compileOnly(project(depend)):compileOnly(depend){
+                switch (depend){
+                    case rootProject.depsLibs.arouterapi:
+                        exclude group: 'com.android.support'
+                        break;
+                }
+            }
+        }
+    }else {
+        dependList.each { String depend ->
+            depend.startsWithAny(':lib',':ft')? implementation(project(depend)):implementation(depend) {
+                switch (depend) {
+                    case rootProject.depsLibs.arouterapi:
+                        exclude group: 'com.android.support'
+                        break;
+                }
+            }
+        }
+    }
+    //arouter注解处理器
+    annotationProcessor rootProject.depsLibs.aroutercompiler
+
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+}

@@ -1,0 +1,43 @@
+plugins {
+    id 'groovy' // Groovy Language
+//    id 'org.jetbrains.kotlin.jvm' // Kotlin
+    id 'java-gradle-plugin' // Java Gradle Plugin
+
+    id 'maven'
+}
+
+sourceSets {
+    main {
+        groovy {
+            srcDir 'src/main/groovy'
+        }
+        resources {
+            srcDir 'src/main/resources'
+        }
+    }
+}
+
+gradlePlugin {
+    plugins {
+        modularPlugin {
+            id = 'com.yuhb.upload'
+            implementationClass = 'com.yuhb.upload.DependencyAutoPlugin'
+        }
+    }
+}
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url:uri('D:/maven_local'))
+            pom.groupId = 'com.yuhb.upload'
+            pom.artifactId = 'upload'
+            pom.version = '1.0.4'
+        }
+    }
+}
+
+
+
+
+
+
