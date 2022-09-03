@@ -59,8 +59,6 @@ android {
 }
 def dependList = [rootProject.depsLibs.okhttp,
                   rootProject.depsLibs.gson,
-                  rootProject.depsLibs.appcompact,
-                  rootProject.depsLibs.design,
                   rootProject.depsLibs.eventbus,
                   rootProject.depsLibs.arouterapi,
                   ':lib_network',':lib_common_ui',':ft_base_service']

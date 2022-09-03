@@ -37,8 +37,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    compileOnly rootProject.depsLibs.appcompact
-    compileOnly rootProject.depsLibs.recyclerview
+//    compileOnly rootProject.depsLibs.appcompact
+//    compileOnly rootProject.depsLibs.recyclerview
     //可以用arouter去掉此依赖
     compileOnly project(':lib_image_loader')
     compileOnly rootProject.depsLibs.magicindicator
